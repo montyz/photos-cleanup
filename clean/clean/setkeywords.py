@@ -1,32 +1,27 @@
 import csv
 import sys
+import clean
+import importlib.resources
 
 from subprocess import Popen, PIPE, STDOUT
 
-replace_keyword_script = """
-on run {photoid, keyword}
-	tell application "Photos"
-		set thisItem to media item id photoid
-		set keywords of thisItem to {keyword}
-	end tell
-end run
-"""
-
 
 def run_applescript(script, arg_list):
-    p = Popen(['osascript', '-'] + arg_list, text=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
-    stdout, stderr = p.communicate(script)
-    return p.returncode, stdout, stderr
+    with importlib.resources.path(clean, script) as fn:
+        p = Popen(['osascript', fn] + arg_list, text=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+        stdout, stderr = p.communicate(script)
+        return p.returncode, stdout, stderr
 
 
 def main(argv):
+    keyword = argv[2]
     with open(argv[1]) as inputfile:
         with open("errors.csv", "w") as errorfile:
             inputcsv = csv.DictReader(inputfile)
             errorcsv = csv.DictWriter(errorfile, ["uuid", "error"])
             errorcsv.writeheader()
             for d in inputcsv:
-                returncode, stdout, stderr = run_applescript(replace_keyword_script, [d['uuid'], 'deleteme'])
+                returncode, stdout, stderr = run_applescript("tagphoto.scpt", [d['uuid'], keyword])
                 if returncode != 0:
                     print("{} returned error code: {}".format(d['uuid'], returncode))
                     errorcsv.writerow({'uuid': d['uuid'], 'error': stdout.strip()})
