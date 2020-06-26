@@ -16,6 +16,14 @@ Follwed https://jacobian.org/2019/nov/11/python-environment-2020/
 
 
 # running osxphotos 
-
+```
 osxphotos dump --db '/Users/monty/Pictures/2020 Pictures/Mexico 2019.photoslibrary' > photos.csv
+osxphotos query --folder Ceramics > ceramics.csv
+python -m clean.setkeywords ../ceramics.csv "ceramics,ceramics_album"
+```
 
+# next:
+
+query all photos
+tag with camera model
+tag with album keywords, mapped
