@@ -33,11 +33,29 @@ To delete all photos with a tag:
 1. open Photos with that library
 2. search for all photos with that tag
 3. select them all, then delete
+4. go to Recently Deleted and permanently delete them all
 
-To apply proper tags to all photos
+To create list of albums to turn into tags:
+```
+cd /Users/monty/code/photos-cleanup/clean
+pythom -m clean.albums.py
+```
+Edit albums.csv so the album names will map to the tags you want
+
+To create alltags.csv to apply to the library:
+```
+cd /Users/monty/code/photos-cleanup/clean
+python -m clean.tagitall
 ```
 
+After reviewing alltags.csv, apply it to the library:
 ```
+cd /Users/monty/code/photos-cleanup/clean
+python -m clean.setalltags alltags.csv
+```
+
+Then create smart albums for every tag.
+
 
 # next:
 
