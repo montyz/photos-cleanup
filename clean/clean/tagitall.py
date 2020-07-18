@@ -12,25 +12,30 @@ def main():
     db = os.path.expanduser("/Users/monty/Pictures/2020 Pictures/Mexico 2019.photoslibrary")
     photosdb = osxphotos.PhotosDB(db)
     with open("alltags.csv", "w") as tagfile:
-        alltagscsv = csv.DictWriter(tagfile, ["uuid", "tags", "fn"])
+        alltagscsv = csv.DictWriter(tagfile, ["uuid", "tags", "fn", "taken"])
         alltagscsv.writeheader()
         tagmap = TagMap("albums.csv")
 
         for p in photosdb.photos():
-            tags = []
+            if p.ismissing:
+                continue
+            tags = set()
 
             model = p.exif_info.camera_model
             if model:
-                camera = str(model)
+                camera = "camera:" + str(model)
             else:
-                camera = "Camera Missing"
-            tags.append(camera)
+                camera = "camera:Missing"
+            tags.add(camera)
             for album in p.album_info:
                 for folder in album.folder_names:
-                    tags.append(tagmap[folder])
-                tags.append(tagmap[album.title])
+                    tags.add(tagmap[folder])
+                tags.add(tagmap[album.title])
 
-            rowdict = {"uuid": p.uuid, "tags": ",".join(tags), "fn": p.filename}
+            rowdict = {"uuid": p.uuid,
+                       "tags": ",".join([i for i in tags if i is not None]),
+                       "fn": p.path,
+                       "taken": p.date.strftime("%Y-%m-%d-%H:%M:%S.%f")}
             alltagscsv.writerow(rowdict)
             print(rowdict)
 
