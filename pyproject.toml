@@ -11,6 +11,7 @@ returns = "^0.14.0"
 pillow = "^7.1.2"
 sqlite_utils = "^2.10"
 click = "^7.1.2"
+sigal = "^2.1"
 
 [tool.poetry.dev-dependencies]
 

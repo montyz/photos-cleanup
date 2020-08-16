@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="album-list">
+  {% for alb in album.albums %}
+    <div class="menu-img thumbnail">
+      <a href="{{ alb.url }}">
+        <img src="{{ alb.thumbnail }}" class="album_thumb"
+             alt="{{ alb.title }}" title="{{ alb.title }}" /></a>
+      <span class="album_title">{{ alb.title }}</span>
+    </div>
+  {% endfor %}
+  </div>
+{% endblock %}

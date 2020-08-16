@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<script src="{{ theme.url }}/js/lightgallery.min.js"></script>
+<script src="{{ theme.url }}/js/lg-thumbnail.min.js"></script>
+<script src="{{ theme.url }}/js/lg-fullscreen.min.js"></script>
+<link rel="stylesheet" href="{{ theme.url }}/css/lightgallery.css">
+{% endblock extra_head %}
+
+{% block content %}
+  {% if album.zip %}
+  <div class="additionnal-infos">
+    <p><a href="{{ album.zip }}"
+          title="Download a zip archive with all images">Download ZIP</a></p>
+  </div>
+  {% endif %}
+
+
+  <div id="lightgallery">
+    {% for media in album.medias %}
+      {% if media.type == "image" %}
+      <a href="{{ media.url }}" data-sub-html=".caption-{{loop.index}}">
+          <img src="{{ media.thumbnail }}">
+          <div class="caption-{{loop.index}}">
+            <h4>{%- if media.title != media.filename %}{{ media.title }}{% endif %}</h4><p>{{ loop.index }}/{{ loop.length }}</p>
+          </div>
+      </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="hidden" style="display:none">
+    <p>
+      {% for media in album.medias %}
+        <a href="{{ media.thumbnail }}">
+          .
+        </a>
+    {% endfor %}
+    </p>
+  </div>
+
+{% endblock %}
+
+{% block extra_footer %}
+<script>
+  lightGallery(document.getElementById('lightgallery'), {
+    controls: false
+  });
+</script>
+{% endblock %}

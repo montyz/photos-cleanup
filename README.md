@@ -12,7 +12,7 @@ Also install the Photos applescript library from http://photosautomation.com/scr
 3. `mv '/Users/monty/Downloads/Photos Utilities.scptd'`
 
 ### also set up python env
-Follwed https://jacobian.org/2019/nov/11/python-environment-2020/
+Followed https://jacobian.org/2019/nov/11/python-environment-2020/
 
 
 # running osxphotos 
@@ -65,9 +65,15 @@ Then create smart albums for every tag.
 
 - remove photos from before 2010 that don't have a tag other than camera
 - check date field for duplicates
+- remove unused tags
+
+### Ceramics
+- try out plex as the photo app
+- export the Ceramics photos preserving the folder/album structure
 
 Maybe this app for offline photos (from a website):
 https://apps.apple.com/us/app/browser-offline-file-storage/id970487401
 
 Or google photos? I downloaded the Backup and Sync from Google app.
+NO--google photos will not work without access to the ios photos library
 

@@ -1,5 +1,13 @@
 [[package]]
 category = "main"
+description = "Fast, simple object-to-object and broadcast signaling"
+name = "blinker"
+optional = false
+python-versions = "*"
+version = "1.4"
+
+[[package]]
+category = "main"
 description = "parse and generate NSKeyedArchiver archives"
 marker = "python_version >= \"3.8\""
 name = "bpylist2"
@@ -28,6 +36,20 @@ click = "*"
 
 [[package]]
 category = "main"
+description = "A very fast and expressive template engine."
+name = "jinja2"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "2.11.2"
+
+[package.dependencies]
+MarkupSafe = ">=0.23"
+
+[package.extras]
+i18n = ["Babel (>=0.8)"]
+
+[[package]]
+category = "main"
 description = "A super-fast templating language that borrows the  best ideas from the existing templating languages."
 name = "mako"
 optional = false
@@ -43,11 +65,34 @@ lingua = ["lingua"]
 
 [[package]]
 category = "main"
+description = "Python implementation of Markdown."
+name = "markdown"
+optional = false
+python-versions = ">=3.5"
+version = "3.2.2"
+
+[package.extras]
+testing = ["coverage", "pyyaml"]
+
+[[package]]
+category = "main"
 description = "Safely add untrusted strings to HTML/XML markup."
 name = "markupsafe"
 optional = false
 python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*"
 version = "1.1.1"
+
+[[package]]
+category = "main"
+description = "Simple yet flexible natural sorting in Python."
+name = "natsort"
+optional = false
+python-versions = ">=3.4"
+version = "7.0.1"
+
+[package.extras]
+fast = ["fastnumbers (>=2.0.0)"]
+icu = ["PyICU (>=1.0.0)"]
 
 [[package]]
 category = "main"
@@ -78,6 +123,14 @@ version = "2.2.1"
 
 [package.extras]
 test = ["allpairspy", "click", "faker", "pytest"]
+
+[[package]]
+category = "main"
+description = "A collection of utilities and processors for the Python Imaging Libary."
+name = "pilkit"
+optional = false
+python-versions = "*"
+version = "2.0"
 
 [[package]]
 category = "main"
@@ -1779,6 +1832,28 @@ typing-extensions = ">=3.7,<4.0"
 
 [[package]]
 category = "main"
+description = "Simple static gallery generator"
+name = "sigal"
+optional = false
+python-versions = ">=3.6"
+version = "2.1"
+
+[package.dependencies]
+Jinja2 = "*"
+Markdown = "*"
+Pillow = ">=4.0.0"
+blinker = "*"
+click = "*"
+natsort = "*"
+pilkit = "*"
+
+[package.extras]
+all = ["boto", "brotli", "feedgenerator", "zopfli", "cryptography"]
+docs = ["sphinx", "alabaster"]
+tests = ["pytest", "pytest-cov"]
+
+[[package]]
+category = "main"
 description = "CLI tool and Python utility functions for manipulating SQLite databases"
 name = "sqlite-utils"
 optional = false
@@ -1814,10 +1889,13 @@ python-versions = "*"
 version = "3.7.4.2"
 
 [metadata]
-content-hash = "9549048982854a45522a39039d0274a70bac4d502602079ed30fb54b3c993b0c"
+content-hash = "0570ac879356404623d3bace20e37f9a867615bb9f40b968371af0a77425a266"
 python-versions = "^3.8"
 
 [metadata.files]
+blinker = [
+    {file = "blinker-1.4.tar.gz", hash = "sha256:471aee25f3992bd325afa3772f1063dbdbbca947a041b8b89466dc00d606f8b6"},
+]
 bpylist2 = [
     {file = "bpylist2-3.0.0-py3-none-any.whl", hash = "sha256:d3b7229c6cf0b4b581ddff9986afdd2bbd2b564357bc69210e7e1cabc3c0074f"},
     {file = "bpylist2-3.0.0.tar.gz", hash = "sha256:b892b339a673e8c46362def6e6e66e8e3ee8e77a1f07e2ef8a58ef97ad1ea7b1"},
@@ -1829,9 +1907,17 @@ click = [
 click-default-group = [
     {file = "click-default-group-1.2.2.tar.gz", hash = "sha256:d9560e8e8dfa44b3562fbc9425042a0fd6d21956fcc2db0077f63f34253ab904"},
 ]
+jinja2 = [
+    {file = "Jinja2-2.11.2-py2.py3-none-any.whl", hash = "sha256:f0a4641d3cf955324a89c04f3d94663aa4d638abe8f733ecd3582848e1c37035"},
+    {file = "Jinja2-2.11.2.tar.gz", hash = "sha256:89aab215427ef59c34ad58735269eb58b1a5808103067f7bb9d5836c651b3bb0"},
+]
 mako = [
     {file = "Mako-1.1.3-py2.py3-none-any.whl", hash = "sha256:93729a258e4ff0747c876bd9e20df1b9758028946e976324ccd2d68245c7b6a9"},
     {file = "Mako-1.1.3.tar.gz", hash = "sha256:8195c8c1400ceb53496064314c6736719c6f25e7479cd24c77be3d9361cddc27"},
+]
+markdown = [
+    {file = "Markdown-3.2.2-py3-none-any.whl", hash = "sha256:c467cd6233885534bf0fe96e62e3cf46cfc1605112356c4f9981512b8174de59"},
+    {file = "Markdown-3.2.2.tar.gz", hash = "sha256:1fafe3f1ecabfb514a5285fca634a53c1b32a81cb0feb154264d55bf2ff22c17"},
 ]
 markupsafe = [
     {file = "MarkupSafe-1.1.1-cp27-cp27m-macosx_10_6_intel.whl", hash = "sha256:09027a7803a62ca78792ad89403b1b7a73a01c8cb65909cd876f7fcebd79b161"},
@@ -1868,6 +1954,10 @@ markupsafe = [
     {file = "MarkupSafe-1.1.1-cp38-cp38-win_amd64.whl", hash = "sha256:e8313f01ba26fbbe36c7be1966a7b7424942f670f38e666995b88d012765b9be"},
     {file = "MarkupSafe-1.1.1.tar.gz", hash = "sha256:29872e92839765e546828bb7754a68c418d927cd064fd4708fab9fe9c8bb116b"},
 ]
+natsort = [
+    {file = "natsort-7.0.1-py3-none-any.whl", hash = "sha256:d3fd728a3ceb7c78a59aa8539692a75e37cbfd9b261d4d702e8016639820f90a"},
+    {file = "natsort-7.0.1.tar.gz", hash = "sha256:a633464dc3a22b305df0f27abcb3e83515898aa1fd0ed2f9726c3571a27258cf"},
+]
 osxphotos = [
     {file = "osxphotos-0.29.23-py3-none-any.whl", hash = "sha256:92799c5020d37b95ef1238b7fd88bbd4c34f3e8ef2420451395ce3798b6405cf"},
     {file = "osxphotos-0.29.23.tar.gz", hash = "sha256:c09c66c7a65ae2e60fd1be33a0ecc14627814d246f6e73f203539f39802a66e4"},
@@ -1875,6 +1965,9 @@ osxphotos = [
 pathvalidate = [
     {file = "pathvalidate-2.2.1-py3-none-any.whl", hash = "sha256:303ae518a94d040dbcc2c41405928870839a6dabab06f0dd504564aeee371819"},
     {file = "pathvalidate-2.2.1.tar.gz", hash = "sha256:2a25ecbc8bff048fd38097c5a57191400a82017d528e9a9063b48e3204134748"},
+]
+pilkit = [
+    {file = "pilkit-2.0.tar.gz", hash = "sha256:ddb30c2f0198a147e56b151476c3bb9fe045fbfd5b0a0fa2a3148dba62d1559f"},
 ]
 pillow = [
     {file = "Pillow-7.1.2-cp35-cp35m-macosx_10_10_intel.whl", hash = "sha256:ae2b270f9a0b8822b98655cb3a59cdb1bd54a34807c6c56b76dd2e786c3b7db3"},
@@ -2411,6 +2504,10 @@ pyyaml = [
 returns = [
     {file = "returns-0.14.0-py3-none-any.whl", hash = "sha256:6b529544ec64dffce72dd183165ed76acfd41bb1a17eb08f2fc0df85c74c9e89"},
     {file = "returns-0.14.0.tar.gz", hash = "sha256:42e490d7e35ce6ba939bcfedaf1173b4b8cec286bdd1c3792043368f08cd0125"},
+]
+sigal = [
+    {file = "sigal-2.1-py3-none-any.whl", hash = "sha256:fc7cf0869ca3ca0ae04750ab603b729eea1ad41b77e3046eccc8b219fa8dc399"},
+    {file = "sigal-2.1.tar.gz", hash = "sha256:d54afeb8e030658f629f3376963e4dd033bd238bdd3e8d7f471382d7ae8cb2b5"},
 ]
 sqlite-utils = [
     {file = "sqlite_utils-2.10-py3-none-any.whl", hash = "sha256:5f91323eda77f4fa8da6a06936a66854a82d3485e93a08cbb6fda770d8176d5c"},
