@@ -22,27 +22,27 @@ Followed https://jacobian.org/2019/nov/11/python-environment-2020/
 osxphotos dump --db '/Users/monty/Pictures/2020 Pictures/Mexico 2019.photoslibrary' > photos.csv
 ```
 
-To tag all photos in the Ceramics folder:
+## To tag all photos in the Ceramics folder:
 ```
 cd /Users/monty/code/photos-cleanup
 osxphotos query --folder Ceramics > ceramics.csv
 cd clean
 python -m clean.setkeywords ../ceramics.csv "ceramics,ceramics_album"
 ```
-To delete all photos with a tag:
+## To delete all photos with a tag:
 1. open Photos with that library
 2. search for all photos with that tag
 3. select them all, then delete
 4. go to Recently Deleted and permanently delete them all
 
-To create list of albums to turn into tags:
+## To create list of albums to turn into tags:
 ```
 cd /Users/monty/code/photos-cleanup/clean
 pythom -m clean.albums.py
 ```
 Edit albums.csv so the album names will map to the tags you want
 
-To create alltags.csv to apply to the library:
+## To create alltags.csv to apply to the library:
 ```
 cd /Users/monty/code/photos-cleanup/clean
 python -m clean.tagitall

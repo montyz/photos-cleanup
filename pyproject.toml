@@ -6,12 +6,13 @@ authors = ["montyz <monty@codetransform.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-osxphotos = "^0.29.23"
+osxphotos = "^0.42.15"
 returns = "^0.14.0"
 pillow = "^7.1.2"
 sqlite_utils = "^2.10"
 click = "^7.1.2"
 sigal = "^2.1"
+py2app = "^0.21"
 
 [tool.poetry.dev-dependencies]
 
