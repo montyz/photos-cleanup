@@ -15,7 +15,7 @@ def main():
     libraries.reverse()
     destdir = Path('/Volumes/Photos/archive')
     info = Path("%s/archive/info.csv" % root)
-    info.mkdir(parents=True, exist_ok=True)
+    info.parent.mkdir(parents=True, exist_ok=True)
     with open(info, "w") as csvfileobj:
         csvfile = csv.DictWriter(csvfileobj, ["dest", "uuid", "orig", "date", "date_modified", "exif"])
         csvfile.writeheader()
