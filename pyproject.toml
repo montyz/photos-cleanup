@@ -13,6 +13,8 @@ sqlite_utils = "^2.10"
 click = "^7.1.2"
 sigal = "^2.1"
 py2app = "^0.21"
+imutils = "^0.5.4"
+opencv-python = "^4.5.1"
 
 [tool.poetry.dev-dependencies]
 
